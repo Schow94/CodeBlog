@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+
+
+<div class="quote">
+    <h1 class="title">Code Blog</h1>
+    <em><h3 class="quotes">Originally started as a place to document my coding journey</h3></em>
+</div>
+
+<% blogs.forEach(function(blog){ %>
+    <section>
+        <div>
+            <div class="caption">
+                <h4 class="text-left">
+                    <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                </h4>
+            </div>
+            <img src="<%= blog.image %>">
+            <div class="meta" style="padding-bottom: 5px;">
+                <em><span><%= blog.created.toDateString() %></span></em>
+            </div>
+            <div class="description">
+                <% if(!blog.body){ %>
+                    <p></p>
+                <% } else{ %>
+                    <p><%- blog.body.substring(0,500) %>...</p>
+                <% } %>
+            </div>
+            <div class="extra">
+                <a class="btn btn-primary" href="/blogs/<%= blog._id %>">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <hr>
+        </div>
+    </section>
+    
+<% }); %>
+
+
+
+
+
+<% include ../partials/footer %>

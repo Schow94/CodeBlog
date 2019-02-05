@@ -1,0 +1,12 @@
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+body {
+    padding-top: 70px;
+}

@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>CodeBlog</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+        <div>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-pencil"></span> CodeBlog</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/blogs">Blogs</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/blogs/new">Post</a></li>
+                            <% if(!currentUser){ %>
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/register">Sign Up</a></li> 
+                            <% } else { %>
+                                <li><a href="#">Signed In as <%= currentUser.username %></a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <% if(error && error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+            </div>
+            
+        </div>
+        
